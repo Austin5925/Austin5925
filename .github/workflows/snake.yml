@@ -29,8 +29,8 @@ jobs:
           github_user_name: Austin5925
           # these next 3 lines generate the files on a branch called "output". This keeps the main branch from cluttering up.
           outputs: |
-            dist/github-contribution-grid-snake.svg
-            dist/github-contribution-grid-snake-dark.svg
+            dist/github-contribution-grid-snake.svg?palette=github-light
+            dist/github-contribution-grid-snake-dark.svg?palette=github-dark
             dist/github-contribution-grid-snake-default.svg
 
       # show the status of the build. Makes it easier for debugging (if there's any issues).
