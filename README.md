@@ -6,7 +6,7 @@
   <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/Austin5925/Austin5925/output/github-contribution-grid-snake.svg">
   <img alt="github contribution grid snake animation" src="https://raw.githubusercontent.com/Austin5925/Austin5925/output/github-contribution-grid-snake.svg">
 </picture>-->
-I'm Ausdin, a student from Sichuan University majoring in CS. Now I'm focusing on Web3 development.
+I'm Ausdin, a student from HKUST. Now I'm focusing on Web3 development(mainly Solana).
 <h3 align="center">GitHub Stats</h3>
 <div align="center"> <img src="https://github-readme-stats.vercel.app/api?username=Austin5925" /> </div>
 <div align="center">
