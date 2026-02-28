@@ -7,8 +7,10 @@
   <img alt="github contribution grid snake animation" src="https://raw.githubusercontent.com/Austin5925/Austin5925/output/github-contribution-grid-snake.svg">
 </picture>-->
 I'm Ausdin, a student from HKUST. Now I'm focusing on Web3 development.
+
 <div align="center">
-## Languages
+
+## Languages  
 ![C](https://img.shields.io/badge/-C-A8B9CC?style=for-the-badge&logo=c&logoColor=white)
 ![C++](https://img.shields.io/badge/-C++-00599C?style=for-the-badge&logo=cplusplus&logoColor=white)
 ![Go](https://img.shields.io/badge/-Go-00ADD8?style=for-the-badge&logo=go&logoColor=white)
