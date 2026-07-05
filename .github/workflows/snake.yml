@@ -1,46 +1,43 @@
-# GitHub Action for generating a contribution graph with a snake eating your contributions.
 name: Generate Snake
 
-# Controls when the action will run. This action runs every 6 hours.
 on:
+  # 每 24 小时自动重新生成一次
   schedule:
-    - cron: "0 */12 * * *"
+    - cron: "0 */24 * * *"
 
-  # This command allows us to run the Action automatically from the Actions tab.
+  # 允许在 Actions 页面手动触发
   workflow_dispatch:
+
+  # master 分支每次 push 都重新生成
   push:
+    branches:
+      - master
 
-# The sequence of runs in this workflow:
 jobs:
-  # This workflow contains a single job called "build"
-  build:
-    # The type of runner that the job will run on
+  generate:
+    permissions:
+      # 用内置 GITHUB_TOKEN 推送到 output 分支需要写权限
+      contents: write
     runs-on: ubuntu-latest
+    timeout-minutes: 5
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks repo under $GITHUB_WORKSHOP, so your job can access it
-      - uses: actions/checkout@v2
-
-      # Generates the snake
-      - uses: Platane/snk/svg-only@v2
-        id: snake-svg
+      # 从贡献图生成贪吃蛇动画 SVG(浅色 + 深色两版)
+      - name: generate github-contribution-grid-snake.svg
+        uses: Platane/snk/svg-only@v3
         with:
-          github_user_name: Austin5925
-          # these next 3 lines generate the files on a branch called "output". This keeps the main branch from cluttering up.
+          github_user_name: ${{ github.repository_owner }}
           outputs: |
-            dist/github-contribution-grid-snake.svg?palette=github-light
+            dist/github-contribution-grid-snake.svg
             dist/github-contribution-grid-snake-dark.svg?palette=github-dark
-            dist/github-contribution-grid-snake-default.svg
 
-      # show the status of the build. Makes it easier for debugging (if there's any issues).
-      - run: git status
-
-      # push the content of <build_dir> to a branch
+      # 把 dist/ 推送到 output 分支。
+      # 用内置的 secrets.GITHUB_TOKEN(自动注入、永不过期),
+      # 取代之前会到期失效的个人访问令牌 PAT2。
       - name: push github-contribution-grid-snake.svg to the output branch
-        uses: crazy-max/ghaction-github-pages@v2.6.0
+        uses: crazy-max/ghaction-github-pages@v3.1.0
         with:
           target_branch: output
           build_dir: dist
         env:
-          GITHUB_TOKEN: ${{ secrets.PAT2 }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
